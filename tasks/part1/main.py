@@ -1,16 +1,11 @@
-from task2 import set_to_dict
+from task6 import get_min_max
 
-dict_to_update = {
-    'a': 1,
-    'b': 4,
-    'c': 3
-}
+filename = '/Users/mkozak/Desktop/GD - Python/capstone_project/tasks/part1/test.txt'
 
 def main():
-    set_to_dict(dict_to_update, a=0, b=4)
+  result = get_min_max(filename)
 
-    print(dict_to_update)
-  
+  print(result)
 
 
 if __name__ == "__main__":
