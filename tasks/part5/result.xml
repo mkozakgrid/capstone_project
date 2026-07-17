@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<weather country="Spain" date="2021-09-25">
+  <summary mean_temp="21.13" mean_wind_speed="1.79" coldest_place="Valladolid" warmest_place="Palma" windiest_place="Valladolid"/>
+  <cities>
+    <Barcelona mean_temp="24.21" mean_wind_speed="1.26" coldest_place="21.66" warmest_place="27.38" windiest_place="3.6"/>
+    <Logrono mean_temp="19.13" mean_wind_speed="2.67" coldest_place="16.35" warmest_place="23.77" windiest_place="7.72"/>
+    <Madrid mean_temp="17.89" mean_wind_speed="2.65" coldest_place="14.66" warmest_place="21.35" windiest_place="4.92"/>
+    <Merida mean_temp="19.53" mean_wind_speed="2.88" coldest_place="15.38" warmest_place="24.54" windiest_place="4.62"/>
+    <Murcia mean_temp="25.64" mean_wind_speed="1.16" coldest_place="22.64" warmest_place="30.26" windiest_place="4.02"/>
+    <Oviedo mean_temp="17.0" mean_wind_speed="1.54" coldest_place="14.26" warmest_place="21.96" windiest_place="6.26"/>
+    <Palma mean_temp="26.21" mean_wind_speed="1.66" coldest_place="22.91" warmest_place="30.37" windiest_place="6.26"/>
+    <Pamplona mean_temp="26.21" mean_wind_speed="1.66" coldest_place="22.91" warmest_place="30.37" windiest_place="6.26"/>
+    <santa_cruz_de_tenerife mean_temp="26.21" mean_wind_speed="1.66" coldest_place="22.91" warmest_place="30.37" windiest_place="6.26"/>
+    <Santander mean_temp="19.85" mean_wind_speed="2.03" coldest_place="16.92" warmest_place="23.28" windiest_place="4.02"/>
+    <santiago_de_compostela mean_temp="16.18" mean_wind_speed="1.77" coldest_place="13.67" warmest_place="19.84" windiest_place="4.02"/>
+    <Seville mean_temp="21.6" mean_wind_speed="1.04" coldest_place="17.24" warmest_place="27.13" windiest_place="2.24"/>
+    <Toledo mean_temp="21.6" mean_wind_speed="1.04" coldest_place="17.24" warmest_place="27.13" windiest_place="2.24"/>
+    <Valencia mean_temp="23.31" mean_wind_speed="1.45" coldest_place="20.9" warmest_place="27.57" windiest_place="4.47"/>
+    <Valladolid mean_temp="15.61" mean_wind_speed="2.22" coldest_place="12.56" warmest_place="19.51" windiest_place="8.23"/>
+    <Vitoria-Gasteiz mean_temp="17.89" mean_wind_speed="1.99" coldest_place="14.73" warmest_place="22.95" windiest_place="7.2"/>
+    <Zaragoza mean_temp="21.16" mean_wind_speed="1.8" coldest_place="16.92" warmest_place="26.61" windiest_place="4.63"/>
+  </cities>
+</weather>
