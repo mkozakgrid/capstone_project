@@ -1,6 +1,7 @@
 import os
 import parsing_serialization as ps
 from typing import List
+from tests.validate_xml import check_result
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -19,26 +20,26 @@ def main():
     warmest_place: str = ''
     windiest_place: str = ''
     total_summary: dict = {}
-    all_cities_summaries: List = []
+    all_cities_summaries: dict = {}
     
     for city in cities:
         json_path = os.path.join(BASE_DIR, 'source_data', city, '2021_09_25.json')
         data = ps.parse_json(json_path)
         city_summary = ps.calculate_city_summary(data, city)
-        all_cities_summaries.append(city_summary)
+        all_cities_summaries[city] = city_summary
 
-        mean_temp += city_summary[0]['mean_temp']
-        mean_wind_speed += city_summary[0]['mean_wind_speed']
+        mean_temp += city_summary['mean_temp']
+        mean_wind_speed += city_summary['mean_wind_speed']
 
-        if city_summary[0]['coldest_place'] < coldest_temperature:
-            coldest_temperature = city_summary[0]['coldest_place']
-            coldest_place = city_summary[0]['city']
-        if city_summary[0]['warmest_place'] > warmest_temperature:
-            warmest_temperature = city_summary[0]['warmest_place']
-            warmest_place = city_summary[0]['city']
-        if city_summary[0]['windiest_place'] > maximum_wind_speed:
-            maximum_wind_speed = city_summary[0]['windiest_place']
-            windiest_place = city_summary[0]['city']
+        if city_summary['mean_temp'] < coldest_temperature:
+            coldest_temperature = city_summary['mean_temp']
+            coldest_place = city_summary['city']
+        if city_summary['mean_temp'] > warmest_temperature:
+            warmest_temperature = city_summary['mean_temp']
+            warmest_place = city_summary['city']
+        if city_summary['mean_wind_speed'] > maximum_wind_speed:
+            maximum_wind_speed = city_summary['mean_wind_speed']
+            windiest_place = city_summary['city']
         
     total_summary = {
         'mean_temp': round((mean_temp / 17), 2),
@@ -53,3 +54,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    check_result(os.path.join(BASE_DIR, 'result.xml'))

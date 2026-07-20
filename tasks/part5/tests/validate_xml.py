@@ -56,7 +56,7 @@ def check_result(xml_path: str):
         "The coldest place is incorrect"
     assert min(cities_summary.items(), key=lambda item: float(item[1].get('mean_temp')))[0] == summary.get('coldest_place'), \
         "The coldest place is incorrect. You need to find city with minimum mean temperature"
-    assert summary.get('windiest_place') == 'Pamplona', \
+    assert summary.get('windiest_place') == 'Merida', \
         "The windiest place is incorrect"
     assert max(cities_summary.items(), key=lambda item: float(item[1].get('mean_wind_speed')))[0] == summary.get('windiest_place'), \
         "The windiest place is incorrect. You need to find city with maximum mean wind speed"

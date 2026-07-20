@@ -9,24 +9,26 @@ def parse_json(json_path: str):
     return data
 
 def calculate_city_summary(data: dict, city: str):
-    city_summary: List = []
+    city_summary: dict = {}
     mean_temp: float = round(sum([hour['temp'] for hour in data['hourly']]) / len(data['hourly']), 2)
     mean_wind_speed: float = round(sum([hour['wind_speed'] for hour in data['hourly']]) / len(data['hourly']), 2)
     min_temp: float = round(min(data['hourly'], key=lambda x: x['temp'])['temp'], 2)
+    min_wind_speed: float = round(min(data['hourly'], key=lambda x: x['wind_speed'])['wind_speed'], 2)
     max_temp: float = round(max(data['hourly'], key=lambda x: x['temp'])['temp'], 2)
     max_wind_speed: float = round(max(data['hourly'], key=lambda x: x['wind_speed'])['wind_speed'], 2)
     
-    city_summary.append({
+    city_summary = {
         'city': city,
         'mean_temp': mean_temp,
         'mean_wind_speed': mean_wind_speed,
-        'coldest_place': min_temp,
-        'warmest_place': max_temp,
-        'windiest_place': max_wind_speed
-    })
+        'min_temp': min_temp,
+        'min_wind_speed': min_wind_speed,
+        'max_temp': max_temp,
+        'max_wind_speed': max_wind_speed
+    }
     return city_summary
 
-def serialize_to_xml(city_summary: List, total_summary: dict, output_path: str):
+def serialize_to_xml(city_summary: List[dict], total_summary: dict, output_path: str):
     root = etree.Element('weather')
     root.set('country', 'Spain')
     root.set('date', '2021-09-25')
@@ -37,13 +39,13 @@ def serialize_to_xml(city_summary: List, total_summary: dict, output_path: str):
     summary.set('warmest_place', str(total_summary['warmest_place']))
     summary.set('windiest_place', str(total_summary['windiest_place']))
     cities = etree.SubElement(root, 'cities')
-    for city_list in city_summary:
-        city = city_list[0]
+    for city in city_summary.values():
         city_element = etree.SubElement(cities, city['city'])
         city_element.set('mean_temp', str(city['mean_temp']))
         city_element.set('mean_wind_speed', str(city['mean_wind_speed']))
-        city_element.set('coldest_place', str(city['coldest_place']))
-        city_element.set('warmest_place', str(city['warmest_place']))
-        city_element.set('windiest_place', str(city['windiest_place']))
+        city_element.set('min_temp', str(city['min_temp']))
+        city_element.set('min_wind_speed', str(city['min_wind_speed']))
+        city_element.set('max_temp', str(city['max_temp']))
+        city_element.set('max_wind_speed', str(city['max_wind_speed']))
     tree = etree.ElementTree(root)
     tree.write(output_path, pretty_print=True, xml_declaration=True, encoding='UTF-8')
